@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Submitted</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f5c400);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: #0b6b3a;
+    color: white;
+    border-radius: 50%;
+    font-size: 48px;
+    line-height: 80px;
+}
+
+h1 {
+    color: #0b6b3a;
+    margin-bottom: 15px;
+}
+
+.message {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.wait {
+    margin-top: 25px;
+    background: #f7f7f7;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.wait h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.timer {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0b6b3a;
+    margin-top: 10px;
+}
+
+.status {
+    margin-top: 20px;
+    color: #777;
+    font-size: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="icon">✓</div>
+
+    <h1>Congratulations!</h1>
+
+    <p class="message">
+        Your loan application has been successfully submitted.
+    </p>
+
+    <div class="wait">
+        <h2>Application Under Review</h2>
+
+        <p>
+            Please wait up to <strong>10 minutes</strong>
+            for the application review.
+        </p>
+
+        <div class="timer" id="timer">10:00</div>
+    </div>
+
+    <p class="status">
+        Please keep this page open while your application is being reviewed.
+    </p>
+
+</div>
+
+<script>
+let time = 10 * 60;
+
+const timer = document.getElementById("timer");
+
+const countdown = setInterval(function () {
+
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    minutes = minutes.toString().padStart(2, "0");
+    seconds = seconds.toString().padStart(2, "0");
+
+    timer.textContent = minutes + ":" + seconds;
+
+    if (time <= 0) {
+        clearInterval(countdown);
+        timer.textContent = "Review Complete";
+    }
+
+    time--;
+
+}, 1000);
+</script>
+
+</body>
+</html>
